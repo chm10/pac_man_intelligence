@@ -2,6 +2,7 @@ from randomfill.walls import Map
 import sys
 
 
+
 def generateDefaultRandomMap():
     maze = ""
     tileMap = Map(16,31,"""
