@@ -1,22 +1,41 @@
-from queue import PriorityQueue
-import searches.dfs as dfs
+from searches import astar as aestrela
+from searches import dfs as dfs
+from desenha_mapa import desenha_mapa
 
-if __name__ == "__main__":
-    graph = {
-        (1,1): set([(1,2), (2,1)]),
-        (1,2): set([(2,2), (1,3)]),
-        (1,3): set([(1,4), (1,2)]),
-        (1,4): set([(1,3), (2,4)]),
-        (2,1): set([(1,1), (1,3)]),
-        (2,2): set([(2,3), (1,2)]),
-        (2,3): set([(2,2)]),
-        (2,4): set([(1,4), (3,4)]),
-        (3,1): set([(2,1), (3,2)]),
-        (3,2): set([(3,1), (3,3)]),
-        (3,3): set([(3,2), (3,4)]),
-        (3,4): set([(2,4), (3,3)]),
-    }
+def main():
+    mapa = {}
+    chars = ['c']
+    inicio = None
+    fim = None
+    largura = 0
+    altura = 0
 
-    path = dfs.dfs(graph, (1,1), (2,2))
-    print(graph)
-    print("path", path) # ==> [(1,2), (2,2), (2,3)]
+    fp = open('./maze/maze.in', 'r')
+    while len(chars) > 0:
+        chars = [str(i) for i in fp.readline().strip()]
+        largura = len(chars) if largura == 0 else largura
+        for x in range(len(chars)):
+            mapa[(x, altura)] = chars[x]
+            if (chars[x] == '@'):
+                inicio = (x, altura)
+            elif (chars[x] == '$'):
+                fim = (x, altura)
+        if (len(chars) > 0):
+            altura += 1
+
+    fp.close()
+    path = dfs.depth_first_search(mapa, inicio, fim)
+    if (path != None):
+        print()
+        print('Nodes expandidos')
+        print(path)
+        print()
+        desenha_mapa(mapa, largura, altura, espaco=1, path=path, inicio=inicio, objetivo=fim)
+        print()
+        print('Contagem: {0}'.format(len(path)))
+        print()
+    else:
+        print('Não há caminho')
+
+
+if __name__ == "__main__": main()

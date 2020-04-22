@@ -1,25 +1,32 @@
-from queue import PriorityQueue
+import estrutura_dados as No
 
-def dfs(graph, start, goal):
-    visited = []
-    path = []
-    fringe = PriorityQueue()
-    fringe.put((0, start, path, visited))
+def depth_first_search(mapa, inicio, fim):
+    aberto = []
+    fechado = []
+    no_inicio = No.No(inicio, None)
+    no_objetivo = No.No(fim, None)
 
-    while not fringe.empty():
-        depth, current_node, path, visited = fringe.get()
+    aberto.append(no_inicio)
+    while len(aberto) > 0:
+        no_atual = aberto.pop(-1)
+        fechado.append(no_atual)
+        if no_atual == no_objetivo:
+            path = []
+            while no_atual != no_inicio:
+                path.append(no_atual.posicao)
+                no_atual = no_atual.pai
+            return path[::-1]
 
-        if current_node == goal:
-            return path + [current_node]
+        (x, y) = no_atual.posicao
+        vizinhos = [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
+        for proximo in vizinhos:
+            valor_mapa = mapa.get(proximo)
+            if ((valor_mapa == '#') or (valor_mapa == '&')):
+                continue
 
-        visited = visited + [current_node]
-
-        child_nodes = graph[current_node]
-        for node in child_nodes:
-            if node not in visited:
-                if node == goal:
-                    return path + [node]
-                depth_of_node = len(path)
-                fringe.put((-depth_of_node, node, path + [node], visited))
-
-    return path
+            vizinhos = No.No(proximo, no_atual)
+            if (vizinhos in fechado):
+                continue
+            if (vizinhos not in aberto):
+                aberto.append(vizinhos)
+    return None
