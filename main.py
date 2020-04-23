@@ -139,7 +139,7 @@ def add_block(n_block,maze,inplace=False):
             maze_copy[position[0]][position[1]] = 4
         return maze_copy
 
-step = [np.array([0,-1]),np.array([0,1]),np.array([1,0]),np.array([-1,0])] # simulate step to up,down,right,left 
+step = {'up':(0,-1),'down':(0,1),'right':(1,0),'left':(-1,0)} # simulate step to up,down,right,left 
 
 
 if __name__ == "__main__":
@@ -157,4 +157,9 @@ if __name__ == "__main__":
     end_position = available_path(np_map)[:1]
     np_map[start_position[0][0]][start_position[0][1]] = 2
     np_map[end_position[0][0]][end_position[0][1]] = 5
+    print(np_map)
     print(conv_int2str(np_map))
+    teste = (0,0)
+    print(f"suppose I 'm {teste}")
+    for i in step:
+        print(f"Go to {i} - coordinate :{teste[0] + step[i][0], teste[1] + step[i][1]}")
