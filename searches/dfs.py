@@ -1,4 +1,5 @@
-import estrutura_dados as No
+from tools import estrutura_dados as No
+
 
 def depth_first_search(mapa, inicio, fim):
     aberto = []

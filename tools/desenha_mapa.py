@@ -1,5 +1,3 @@
-import estrutura_dados as No
-
 def desenha_mapa(mapa, largura, altura, espaco=2, **kwargs):
     for y in range(altura):
         for x in range(largura):
