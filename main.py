@@ -1,4 +1,5 @@
 from searches import best
+from searches import dfs
 from searches import astar
 from tools.desenha_mapa import desenha_mapa
 
@@ -24,8 +25,8 @@ def main():
             altura += 1
 
     fp.close()
-    #path = dfs.depth_first_search(mapa, inicio, fim)
-    path = astar.aestrela(mapa, inicio, fim)
+    path = dfs.depth_first_search(mapa, inicio, fim)
+    #path = astar.aestrela(mapa, inicio, fim)
     #path = dfs.depth_first_search(mapa,inicio,fim)
     #path = best.best_first_search(mapa, inicio, fim)
 

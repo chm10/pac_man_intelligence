@@ -32,7 +32,11 @@ def best_first_search(mapa, inicio, fim):
             valor = mapa.get(proximo)
             if (valor == '#'):
                 continue
+            if (valor == '&'):
+                continue
+
             vizinho = No.No(proximo, no_atual)
+
             if (vizinho in fechado):
                 continue
             vizinho.g = abs(vizinho.posicao[0] - no_inicio.posicao[0]) + abs(
