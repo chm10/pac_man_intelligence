@@ -34,6 +34,8 @@ def best_first_search(mapa, inicio, fim):
                 continue
             if (valor == '&'):
                 continue
+            if (valor == ' '):
+                continue
 
             vizinho = No.No(proximo, no_atual)
 

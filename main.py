@@ -25,10 +25,10 @@ def main():
             altura += 1
 
     fp.close()
-    path = dfs.depth_first_search(mapa, inicio, fim)
+    #path = dfs.depth_first_search(mapa, inicio, fim)
     #path = astar.aestrela(mapa, inicio, fim)
     #path = dfs.depth_first_search(mapa,inicio,fim)
-    #path = best.best_first_search(mapa, inicio, fim)
+    path = best.best_first_search(mapa, inicio, fim)
 
     if (path != None):
         print()
