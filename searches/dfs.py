@@ -1,4 +1,5 @@
-import estrutura_dados as No
+from tools import estrutura_dados as No
+
 
 def depth_first_search(mapa, inicio, fim):
     aberto = []
@@ -21,7 +22,7 @@ def depth_first_search(mapa, inicio, fim):
         vizinhos = [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
         for proximo in vizinhos:
             valor_mapa = mapa.get(proximo)
-            if ((valor_mapa == '#') or (valor_mapa == '&')):
+            if ((valor_mapa == '#') or (valor_mapa == '&') or (valor_mapa == ' ')):
                 continue
 
             vizinhos = No.No(proximo, no_atual)

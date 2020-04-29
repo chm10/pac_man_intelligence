@@ -1,4 +1,4 @@
-import estrutura_dados as No
+from tools import estrutura_dados as No
 
 def aestrela(mapa, inicio, fim):
     aberto = []
@@ -11,34 +11,34 @@ def aestrela(mapa, inicio, fim):
 
     while len(aberto) > 0:
         aberto.sort()
-        current_no = aberto.pop(0)
-        fechado.append(current_no)
-        if current_no == objetivo_no:
+        no_atual = aberto.pop(0)
+        fechado.append(no_atual)
+        if no_atual == objetivo_no:
             path = []
-            while current_no != inicio_no:
-                path.append(current_no.posicao)
-                current_no = current_no.pai
+            while no_atual != inicio_no:
+                path.append(no_atual.posicao)
+                no_atual = no_atual.pai
             return path[::-1]
 
-        (x, y) = current_no.posicao
-        neighbors = [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
+        (x, y) = no_atual.posicao
+        vizinhos = [(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)]
 
-        for next in neighbors:
-            mapa_valor = mapa.get(next)
+        for prox in vizinhos:
+            mapa_valor = mapa.get(prox)
             if ((mapa_valor == '#') or (mapa_valor == '&')):
                 continue
-            neighbor = No.No(next, current_no)
+            vizinho = No.No(prox, no_atual)
 
-            if (neighbor in fechado):
+            if (vizinho in fechado):
                 continue
-            neighbor.g = abs(neighbor.posicao[0] - inicio_no.posicao[0]) + abs(
-                neighbor.posicao[1] - inicio_no.posicao[1])
-            neighbor.h = abs(neighbor.posicao[0] - objetivo_no.posicao[0]) + abs(
-                neighbor.posicao[1] - objetivo_no.posicao[1])
-            neighbor.f = neighbor.g + neighbor.h
+            vizinho.g = abs(vizinho.posicao[0] - inicio_no.posicao[0]) + abs(
+                vizinho.posicao[1] - inicio_no.posicao[1])
+            vizinho.h = abs(vizinho.posicao[0] - objetivo_no.posicao[0]) + abs(
+                vizinho.posicao[1] - objetivo_no.posicao[1])
+            vizinho.f = vizinho.g + vizinho.h
             for no in aberto:
-                if (neighbor == no and neighbor.f > no.f):
+                if (vizinho == no and vizinho.f > no.f):
                     continue
-            aberto.append(neighbor)
+            aberto.append(vizinho)
 
     return None

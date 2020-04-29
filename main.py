@@ -1,6 +1,8 @@
-from searches import astar as aestrela
-from searches import dfs as dfs
-from desenha_mapa import desenha_mapa
+from searches import best
+from searches import dfs
+from searches import astar
+from searches import bfs
+from tools.desenha_mapa import desenha_mapa
 
 def main():
     mapa = {}
@@ -24,10 +26,14 @@ def main():
             altura += 1
 
     fp.close()
-    path = dfs.depth_first_search(mapa, inicio, fim)
+    #path = dfs.depth_first_search(mapa, inicio, fim)
+    path = astar.aestrela(mapa, inicio, fim)
+    #path = bfs.breadth_first_search(mapa,inicio,fim)
+    #path = best.best_first_search(mapa, inicio, fim)
+
     if (path != None):
         print()
-        print('Nodes expandidos')
+        print('Nos expandidos')
         print(path)
         print()
         desenha_mapa(mapa, largura, altura, espaco=1, path=path, inicio=inicio, objetivo=fim)
