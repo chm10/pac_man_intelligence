@@ -18,8 +18,8 @@ def breadth_first_search(mapa, inicio, fim):
         if no_atual == objetivo:
             caminho = []
             while no_atual != inicio_node:
-                caminho.append(no_atual.position)
-                no_atual = no_atual.parent
+                caminho.append(no_atual.posicao)
+                no_atual = no_atual.pai
             return caminho[::-1]
 
         (x, y) = no_atual.posicao
@@ -30,15 +30,15 @@ def breadth_first_search(mapa, inicio, fim):
 
             valor = mapa.get(proximo)
 
-            if (valor == '#') or (valor == '&'):
+            if (valor == '#') or (valor == '&') or (valor == ' '):
                 continue
 
-            neighbor = No.No(proximo, no_atual)
+            vizinho = No.No(proximo, no_atual)
 
-            if (neighbor in fechado):
+            if (vizinho in fechado):
                 continue
 
-            if (neighbor not in aberto):
-                aberto.append(neighbor)
+            if (vizinho not in aberto):
+                aberto.append(vizinho)
 
     return None
