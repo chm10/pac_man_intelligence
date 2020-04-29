@@ -14,15 +14,5 @@ git clone git@github.com:MatteusStranger/pac_man_intelligence.git
 `````
 python main.py
 `````
-## What you need to know
 
-* `sample.py` create maze from randomfill
-* main use this function to get string maze
-* main convert string to numpy array (numeric matrix n x m)
-* main add random goal and block (you can choose the number of goal and block as parameter)
-* main process maze random map with random goal, block and start position
-* `randomfill` is a external folder used in this project (we use `wall.py`)
 
-## Credits
-* Maze generator: Used `randomfill` from  https://github.com/shaunlebron/pacman-mazegen
-* Search method: Inspired by https://github.com/aimacode/aima-python/blob/master/search.ipynb

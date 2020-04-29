@@ -1,5 +1,7 @@
-from randomfill.walls import Map 
+from randomfill.walls import Map
+import tools.conversor as conv
 import sys
+
 
 
 def generateDefaultRandomMap():
