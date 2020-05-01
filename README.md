@@ -8,7 +8,7 @@
 
 ## Clone repository
 `````
-git clone git@github.com:MatteusStranger/pac_man_intelligence.git
+git https://github.com/MatteusStranger/pac_man_intelligence.git
 `````
 
 
