@@ -33,14 +33,14 @@ You can run this project using Anaconda or Docker
 conda create -y --name mo416_project1 python==3.7 
 `````
 
-#### Install requirements
-`````
-conda install -f -y -q --name mo416_project1 -c conda-forge --file requirements.txt
-`````
-
 #### Activate environment
 `````
 conda activate mo416_project1
+`````
+
+#### Install requirements
+`````
+pip install -r requirements.txt
 `````
 
 #### Run using python
@@ -58,6 +58,7 @@ Remember: Go to project path before run this command on your Anaconda Terminal
 
 #### Uninstall environment
 `````
+conda activate base
 conda remove --name mo416_project1 --all
 `````
 
