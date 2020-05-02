@@ -1,5 +1,6 @@
 # Pac Man Intelligence
 
+![Building](https://travis-ci.com/chm10/pac_man_intelligence.svg?branch=master)
 
 # Requisites
 ## Download Git
