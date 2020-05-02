@@ -8,7 +8,6 @@ services:
 
 before_install:
 - docker build -t "jupyter_slim" .
-- docker run --name mo416_project1 -p 8888:8888  jupyter_slim
 
 script:
 - pytest
