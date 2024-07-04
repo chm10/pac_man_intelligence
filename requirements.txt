@@ -1,6 +1,9 @@
 jupyter==1.0.0
 matplotlib==3.2.1
-notebook==6.0.3
-numpy==1.18.3
+notebook==6.4.1
+numpy==1.22.2
 pandas==1.0.3
 pytest==5.4.1
+ipython>=8.10.0 # not directly required, pinned by Snyk to avoid a vulnerability
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+tornado>=6.4.1 # not directly required, pinned by Snyk to avoid a vulnerability
